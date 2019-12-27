@@ -30,13 +30,13 @@ const ToolFormAdd = ({ handleModal }) => {
     <Container>
       <Form schema={schema} onSubmit={handleSubmit}>
         <span>+ Add</span>
-        <label htmlFor="name">Tool Name</label>
+        <label htmlFor="title">Tool Name</label>
         <Input name="title" />
         <label htmlFor="link">Tool Link</label>
         <Input name="link" />
-        <label htmlFor="link">Tool description</label>
+        <label htmlFor="description">Tool description</label>
         <Input multiline name="description" />
-        <label htmlFor="link">Tags</label>
+        <label htmlFor="tags">Tags</label>
         <Input name="tags" type="text" placeholder="comma separated" />
         <div className="button">
           <button type="submit">Enviar</button>

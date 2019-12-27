@@ -30,3 +30,17 @@ export function deleteTool(id) {
     id,
   };
 }
+
+export function searchDescTool(text) {
+  return {
+    type: '@tool/SEARCH_DESC_TOOL',
+    text,
+  };
+}
+
+export function searchTagsTool(text) {
+  return {
+    type: '@tool/SEARCH_TAGS_TOOL',
+    text,
+  };
+}

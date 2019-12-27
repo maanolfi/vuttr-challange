@@ -11,9 +11,10 @@ import { Container, Content } from './styles';
 
 import * as ToolsActions from '../../store/modules/tools/actions';
 
-const Home = ({ requestTools }) => {
+const Home = ({ requestTools, searchDescTool, searchTagsTool }) => {
   const { tools } = useSelector(state => state.tools);
   const [modal, setModal] = useState(false);
+  const [check, setCheck] = useState(false);
 
   const handleModal = () => {
     setModal(!modal);
@@ -31,9 +32,23 @@ const Home = ({ requestTools }) => {
 
         <nav>
           <div>
-            <input type="text" id="search" placeholder="search" />
+            <input
+              type="text"
+              id="search"
+              placeholder="search"
+              onChange={e =>
+                !check
+                  ? searchDescTool(e.target.value)
+                  : searchTagsTool(e.target.value)
+              }
+            />
+            <input
+              type="checkbox"
+              id="tags"
+              name="tags"
+              onChange={e => setCheck(e.target.checked)}
+            />
 
-            <input type="checkbox" id="tags" name="tags" />
             <label htmlFor="tags">search in tags only</label>
           </div>
           <button onClick={handleModal}>
