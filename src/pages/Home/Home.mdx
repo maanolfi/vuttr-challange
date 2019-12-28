@@ -1,0 +1,44 @@
+---
+name: Home Page
+---
+
+# Página principal
+
+Barra de navegção, receba as actions: searchDescTool e searchTagsTool utilizadas pelo Redux Saga
+
+
+```js
+<nav>
+  <div>
+    <input
+      type="text"
+      id="search"
+      placeholder="search"
+      onChange={e =>
+        !check
+          ? searchDescTool(e.target.value)
+          : searchTagsTool(e.target.value)
+      }
+    />
+    <input
+      type="checkbox"
+      id="tags"
+      name="tags"
+      onChange={e => setCheck(e.target.checked)}
+    />
+
+    <label htmlFor="tags">search in tags only</label>
+  </div>
+  <button onClick={handleModal}>
+    <MdAdd size={16} />
+    Add
+  </button>
+</nav>
+```
+
+O tools é recupeardo a partir do state do redux, trazendo um array com todos os objetos do bd e passado
+para o componente ToolItem atraves de um .map.
+
+```js
+const { tools } = useSelector(state => state.tools);
+```

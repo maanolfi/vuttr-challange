@@ -1,0 +1,51 @@
+---
+name: Tool item
+---
+
+# Tool Item
+
+Este componente é responsavel por renderizar cada item. Ele recebe um objeto data
+contendo o id, title, link, description e um array com as Tags.
+
+```js
+<div>
+  <header>
+    <a href="/">{data.title}</a>
+
+    <button onClick={handleModal}>
+      <MdClear />
+      remove
+    </button>
+  </header>
+
+  <aside>{data.description}</aside>
+
+  <footer>
+    {data.tags.map(tag => (
+      <strong key={tag}>#{tag} </strong>
+    ))}
+  </footer>
+</div>
+```
+
+Também contém a chamada para o Modal Remove.
+
+```js
+<ReactModal open={modal} handleModal={handleModal} label="Form add">
+  <ModalRemove>
+    <span>
+      <MdClear size={16} />
+      Remove tool
+    </span>
+    <span>Are you sure you want to remove {data.title}? </span>
+    <div>
+      <button id="cancel" onClick={handleModal}>
+        Cancel
+      </button>
+      <button id="yes" onClick={() => dispath(deleteTool(data.id))}>
+        Yes, remove
+      </button>
+    </div>
+  </ModalRemove>
+</ReactModal>
+```

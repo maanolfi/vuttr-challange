@@ -1,0 +1,53 @@
+---
+name: Form Create Tool
+---
+
+import { Form, Input } from '@rocketseat/unform';
+
+# Form create tool
+
+Formulário feito com a lib [Unform](https://github.com/Rocketseat/unform). Schema de validação usando a lib Yup.
+
+```js
+
+const schema = Yup.object().shape({
+  title: Yup.string().required(),
+  link: Yup.string().required(),
+  description: Yup.string()
+    .max(500)
+    .required('Max 500 caracters'),
+  tags: Yup.string(),
+});
+
+```
+
+```js
+import React from 'react';
+import { Form, Input } from '@rocketseat/unform';
+
+function App() {
+
+  function handleSubmit(data) {
+    console.log(data);
+
+    /**
+     * {
+     *   title: 'Tool chrome',
+     *   link: 'google.com',
+     *   description: 'most used search tool in the world',
+     *   tags: 'google, tool, search'
+     * }
+     */
+  }
+
+  return (
+    <Form schema={schema} onSubmit={handleSubmit}>
+        <Input name="title" />
+        <Input name="link" />
+        <Input multiline name="description" />
+        <Input name="tags" type="text" placeholder="comma separated" />
+          <button type="submit">Enviar</button>
+      </Form>
+  );
+}
+```

@@ -1,0 +1,31 @@
+---
+name: Modal
+---
+
+import { Playground } from 'docz'
+import ReactModal from './index'
+
+# Modal
+
+Você deve importa o ReactModal e passar duas props obrigatorias, que são:
+open e handleModal
+
+<Playground>
+  <ReactModal open={false} handleModal={() => {}} label="Name" >
+    <span>Teste</span>
+  </ReactModal>
+</Playground>
+
+
+A props open recebe o valor do campo check (true / false)
+
+```js
+  const [check, setCheck] = useState(false);
+
+  const handleModal = () => {
+    setModal(!modal);
+  };
+
+```
+
+
